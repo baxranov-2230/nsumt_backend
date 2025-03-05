@@ -2,19 +2,20 @@
 from pydantic import BaseModel
 
 
-class CategoryBase(BaseModel):
+class FacultyBase(BaseModel):
     name_uz: str
     name_ru: str
     name_en: str
+    # faculty_icon: str
 
 
 
-class CategoryCreateRequest(CategoryBase):
+class FacultyCreateRequest(FacultyBase):
     class Config:
         from_attributes = True
 
 
-class CategoryCreateResponse(CategoryBase):
+class FacultyCreateResponse(FacultyBase):
     id: int
 
     class Config:

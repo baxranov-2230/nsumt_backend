@@ -3,18 +3,18 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from src.base.db import get_db
-from src.models import Category
+from src.models import Faculty
 
 router = APIRouter()
 
 
-@router.get('/get_categories')
+@router.get('/get_faculties')
 async def get_category(db: AsyncSession = Depends(get_db)):
     stmt = await db.execute(
-        select(Category.id.label('category_id'),
-               Category.name_uz.label('name_uz'),
-               Category.name_ru.label('name_ru'),
-               Category.name_en.label('name_en')
+        select(Faculty.id.label('faculty_id'),
+               Faculty.name_uz.label('name_uz'),
+               Faculty.name_ru.label('name_ru'),
+               Faculty.name_en.label('name_en')
                )
     )
 
@@ -22,10 +22,10 @@ async def get_category(db: AsyncSession = Depends(get_db)):
 
     return [
         dict(
-            category_id=item.category_id,
-            category_name_uz=item.name_uz,
-            category_name_ru=item.name_ru,
-            category_name_en=item.name_en,
+            faculty_id=item.faculty_id,
+            faculty_name_uz=item.name_uz,
+            faculty_name_ru=item.name_ru,
+            faculty_name_en=item.name_en,
         )
         for item in results
     ]

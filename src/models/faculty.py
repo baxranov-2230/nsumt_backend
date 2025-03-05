@@ -1,13 +1,15 @@
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import relationship
+
 
 from src.base.db import Base
 
 
-class Category(Base):
-    __tablename__ = 'categories'
+class Faculty(Base):
+    __tablename__ = 'faculties'
 
     id = Column(Integer, primary_key=True)
     name_uz=Column(String, nullable=False)
     name_ru=Column(String, nullable=False)
     name_en=Column(String, nullable=False)
+    faculty_icon=Column(String, nullable=True)
+
